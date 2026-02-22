@@ -1,89 +1,250 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawl Stars - Récompense</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brawl Stars – Claim Reward</title>
 
-    <style>
-        @font-face {
-            font-family: 'Nougat';
-            src: url('/assets/fonts/fonnts.com-kurstiva_black.otf') format('truetype');
-            font-weight: 900;
-            font-style: normal;
-        }
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        body {
-            background: url('/assets/background1.jpg') center center / cover repeat;
-            background-attachment: fixed;
-            min-height: 100vh;
-            font-family: 'Nougat', sans-serif;
-        }
+  <!-- Clash Royale font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap"
+    rel="stylesheet"
+  />
 
-        .store-img:hover {
-            opacity: 0.9;
-        }
-    </style>
+  <style>
+    /* 1. TYPOGRAPHY */
+    .font-game {
+      font-family: "Titan One", cursive;
+    }
+
+    body {
+        background: url("/assets/background1.jpg") center / cover no-repeat fixed;
+      margin: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-color: #1a65ac;
+      position: relative;
+    }
+
+    /* 2. THE 3D QUILTED DIAMOND BACKGROUND */
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(0, 0, 0, 0.2) 0px,
+          rgba(0, 0, 0, 0.2) 2px,
+          transparent 2px,
+          transparent 58px,
+          rgba(255, 255, 255, 0.15) 58px,
+          rgba(255, 255, 255, 0.15) 60px
+        ),
+        repeating-linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.2) 0px,
+          rgba(0, 0, 0, 0.2) 2px,
+          transparent 2px,
+          transparent 58px,
+          rgba(255, 255, 255, 0.15) 58px,
+          rgba(255, 255, 255, 0.15) 60px
+        );
+
+      background-position: 0 0, 0 0;
+      background-size: 85px 85px;
+    }
+
+    /* Vignette */
+    .bg-vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70%;
+      background: linear-gradient(
+        to bottom,
+        rgba(1, 25, 55, 0.8) 0%,
+        rgba(1, 25, 55, 0.4) 30%,
+        transparent 100%
+      );
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* 3. TEXT EFFECTS */
+    .text-stroke-main {
+      -webkit-text-stroke: 1.5px black;
+      text-shadow:
+        3px 3px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    }
+
+    .text-stroke-sub {
+      -webkit-text-stroke: 1px black;
+      text-shadow:
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    }
+
+    /* 4. BUTTON STYLING */
+    .btn-claim {
+      background: linear-gradient(to bottom, #ffe44b 0%, #fea900 100%);
+      border: 2px solid #000;
+      border-radius: 12px;
+      box-shadow: 0px 6px 0px #000, 0px 8px 10px rgba(0, 0, 0, 0.4);
+      transition: all 0.1s ease;
+    }
+
+    .btn-claim:active {
+      transform: translateY(6px);
+      box-shadow: 0px 0px 0px #000, 0px 0px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-text {
+      -webkit-text-stroke: 0.8px black;
+      text-shadow: 1.5px 1.5px 0 #000;
+    }
+
+    /* 5. LOGO & IMAGES */
+    .logo-img {
+      filter: drop-shadow(0 5px 0 #000);
+    }
+
+    .store-badge {
+      transition: transform 0.2s;
+    }
+    .store-badge:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes subtle-float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .animate-bounce-slow {
+      animation: subtle-float 3s infinite ease-in-out;
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Background layers -->
+  <div class="bg-pattern"></div>
+  <div class="bg-vignette"></div>
 
-    <!-- Overlay Locker -->
-    <div id="lockerOverlay" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center z-50">
-    <div class="w-[90%] md:w-[60%] lg:w-[40%] h-[80vh] bg-white rounded-xl overflow-hidden shadow-2xl border border-gray-300">
-        <iframe 
-            src="https://lockedapp.org/cl/i/6ndgxv"
-            class="w-full h-full border-0"
-            scrolling="yes"
-        ></iframe>
-    </div>
-</div>
+  <!-- Main content -->
+  <div class="relative z-10 flex flex-col items-center min-h-screen pt-12 pb-10 px-4">
 
-    <!-- Main Content -->
-    <div class="flex flex-col items-center min-h-screen mt-20">
-        
-        <!-- Logo -->
-        <div class="mb-5">
-            <img src="/assets/brawlstars.png" alt="Brawl Stars" class="w-[200px] h-auto object-contain">
-        </div>
-
-        <!-- Heading -->
-        <h1 class="text-[#FFB800] text-[20px] md:text-3xl font-bold text-center mb-5 leading-tight uppercase">
-            Claim a Reward in Brawl Stars !
-        </h1>
-
-        <!-- CTA Button -->
-        <div class="w-[90%] md:w-[25%] flex items-center justify-center mb-4">
-            <img src="/assets/button2.png" class="w-[65%]" alt="" onclick="openLocker()">
-        </div>
-
-        <!-- Download Section -->
-        <h2 class="text-[#FFB800] text-2xl font-semibold uppercase">
-            Download Brawl Stars
-        </h2>
-
-        <!-- Store Buttons -->
-        <div class="w-full max-w-sm flex justify-center mt-8">
-            <a href="https://play.google.com/store/apps/details?id=com.supercell.brawlstars&hl=fr" class="block transition-opacity store-img w-3/5">
-                <img src="/assets/play-app.png" alt="Download" class="w-full h-auto">
-            </a>
-        </div>
+    <!-- Logo -->
+    <div class="w-72 md:w-80 mb-3">
+      <img
+        src="/assets/brawlstars.png"
+        class="w-full h-auto logo-img animate-bounce-slow"
+        alt="Brawl Stars"
+      />
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-black text-white py-8 px-6 font-sans">
-        <nav class="max-w-4xl mx-auto flex justify-center gap-8 text-xs md:text-sm">
-            <a href="#" class="hover:text-gray-400 text-center">Guide<br>parental</a>
-            <a href="#" class="hover:text-gray-400 text-center">Conditions<br>d'utilisation</a>
-            <a href="#" class="hover:text-gray-400 text-center">Politique de<br>confidentialité</a>
-        </nav>
-    </footer>
+    <!-- Title -->
+    <h1 class="font-game text-white text-[22px] md:text-2xl text-center leading-tight text-stroke-main">
+      Claim a Reward in <br />Brawl Stars!
+    </h1>
 
-    <script>
-        function openLocker() {
-            document.getElementById("lockerOverlay").classList.remove("hidden");
-        }
-    </script>
+    <!-- CTA -->
+    <div class="mt-6">
+      <button
+        onclick="openLocker()"
+        class="btn-claim w-60 h-16 flex items-center justify-center cursor-pointer"
+      >
+        <span class="font-game text-white text-xl btn-text tracking-wider uppercase">
+          Claim Reward
+        </span>
+      </button>
+    </div>
 
+    <!-- Store section -->
+    <div class="mt-8 flex flex-col items-center gap-3">
+      <p class="font-game text-white text-sm text-stroke-sub tracking-wide">
+        Download Brawl Stars
+      </p>
+
+      <a
+        href="https://play.google.com/store/apps/details?id=com.supercell.brawlstars"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="store-badge w-48 block"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+          class="w-full h-auto drop-shadow-md"
+          alt="Get it on Google Play"
+        />
+      </a>
+
+      <a
+        href="https://apps.apple.com/us/app/brawl-stars/id1229016807"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="store-badge w-44 block mx-auto -mt-1"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg"
+          class="w-full h-auto drop-shadow-md"
+          alt="Download on the App Store"
+        />
+      </a>
+    </div>
+  </div>
+
+  <!-- Locker overlay -->
+  <div
+    id="lockerOverlay"
+    class="fixed inset-0 hidden z-50 bg-black/40 flex items-center justify-center px-3"
+    onclick="closeLocker()"
+  >
+    <div
+      class="w-[92%] md:w-[60%] lg:w-[40%] h-[80vh] bg-white rounded-xl overflow-hidden shadow-2xl border border-gray-300"
+      onclick="event.stopPropagation()"
+    >
+      <div class="flex items-center justify-between px-3 py-2 bg-gray-50 border-b">
+        <p class="font-game text-sm text-gray-700">Verification</p>
+      </div>
+
+      <iframe
+        src="https://lockedapp.org/cl/i/veevp9"
+        class="w-full h-full border-0"
+        scrolling="yes"
+        title="locker"
+      ></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openLocker() {
+      document.getElementById("lockerOverlay").classList.remove("hidden");
+    }
+    function closeLocker() {
+      document.getElementById("lockerOverlay").classList.add("hidden");
+    }
+  </script>
 </body>
 </html>
